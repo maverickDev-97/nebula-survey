@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import "./globals.css";
+
 import { Header } from "./components/Header/Header";
+import { StoreProvider } from "@/store/StoreProvider";
+
+import "./globals.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
@@ -23,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.variable}`}>
-        <Header />
-        <main>{children}</main>
+        <StoreProvider>
+          <Header />
+          <main>{children}</main>
+        </StoreProvider>
       </body>
     </html>
   );

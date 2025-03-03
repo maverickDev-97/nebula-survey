@@ -15,7 +15,6 @@ export default async function SurveyPage({
   params: Promise<{ id: keyof typeof surveyData.questions }>;
 }) {
   const { id } = await params;
-
   const question = surveyData.questions[id];
 
   if (!question) {
