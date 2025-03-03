@@ -1,6 +1,7 @@
 :root {
   --background: #fff0f0;
   --foreground: #333333;
+  --space-size--md: 20px;
 }
 
 html,
