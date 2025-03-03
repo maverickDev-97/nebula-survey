@@ -2,6 +2,7 @@
   --background: #fff0f0;
   --foreground: #333333;
   --space-size--md: 20px;
+  --space-size--sm: 15px;
 }
 
 html,
@@ -10,13 +11,16 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  display: flex;
+  justify-content: center;
 }
 
 * {

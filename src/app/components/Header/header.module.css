@@ -1,0 +1,19 @@
+.header {
+  position: relative;
+  padding: var(--space-size--sm) 0;
+  display: flex;
+  justify-content: center;
+}
+
+.iconWrapper {
+  cursor: pointer;
+  position: relative;
+  left: -40%;
+  background: none;
+  border: 0;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
