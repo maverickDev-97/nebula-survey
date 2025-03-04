@@ -19,7 +19,6 @@ export const useDynamicValues = () => {
     isMale: boolean,
     isParent: boolean
   ) => {
-    console.log(textToReplace);
     return textToReplace
       .replace(/\{gender\}/g, isMale ? "male" : "female")
       .replace(/\{isParent\}/g, isParent ? "who have children" : "");
