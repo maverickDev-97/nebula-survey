@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
 import { RootState } from "@/store";
 import { useDynamicValues } from "@/hooks";
+import { resetSurvey } from "@/store/reducers/surveySlice";
+import { Button } from "@/app/components/Button/Button";
 
 import surveyData from "@/data/survey.json";
 
@@ -13,6 +15,7 @@ import styles from "./page.module.css";
 
 export default function ResultsPage() {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const { replaceDynamicValues } = useDynamicValues();
 
@@ -44,6 +47,16 @@ export default function ResultsPage() {
           </div>
         );
       })}
+      <div className={styles.buttonWrapper}>
+        <Button
+          label="Reset survey"
+          questionId=""
+          customOnClick={() => {
+            dispatch(resetSurvey());
+            router.push("/survey/q1");
+          }}
+        />
+      </div>
     </div>
   );
 }

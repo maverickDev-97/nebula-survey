@@ -16,6 +16,7 @@ interface ButtonProps {
   dynamicValue?: DynamicValue;
   showHint?: boolean;
   skipSaving?: boolean;
+  customOnClick?: () => void;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -25,12 +26,17 @@ const Button: FC<ButtonProps> = ({
   dynamicValue,
   showHint,
   skipSaving,
+  customOnClick,
 }) => {
   const router = useRouter();
   const { setDynamicValue } = useDynamicValues();
   const dispatch = useDispatch();
 
   const onClick = () => {
+    if (customOnClick) {
+      return customOnClick();
+    }
+
     if (showHint) {
       router.push(`/survey/hint?next=${nextQuestionId}`);
       return;

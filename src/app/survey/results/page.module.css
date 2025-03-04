@@ -10,3 +10,9 @@
 .question {
   margin-bottom: var(--space-size--sm);
 }
+
+.buttonWrapper {
+  margin: var(--space-size--md) 0 var(--space-size--lg);
+  display: flex;
+  justify-content: center;
+}
