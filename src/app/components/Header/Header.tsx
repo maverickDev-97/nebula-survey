@@ -1,14 +1,13 @@
 import Image from "next/image";
 
+import { BackButton } from "./BackButton";
+
 import styles from "./header.module.css";
-import { Icons } from "../Icons/Icons";
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <button className={styles.iconWrapper}>
-        <Icons.Back />
-      </button>
+      <BackButton />
       <Image width={24} height={24} alt="Nebula logo" src="/logo_black.png" />
     </header>
   );
