@@ -5,18 +5,15 @@ import { useRouter } from "next/navigation";
 
 import styles from "./button.module.css";
 import { useDispatch } from "react-redux";
-import {
-  saveAnswer,
-  setIsMale,
-  setIsParent,
-} from "@/store/reducers/surveySlice";
-import { DynamicValues } from "@/types";
+import { saveAnswer } from "@/store/reducers/surveySlice";
+import { DynamicValue } from "@/types";
+import { useDynamicValues } from "@/hooks";
 
 interface ButtonProps {
   label: string;
   questionId: string;
   nextQuestionId?: string;
-  dynamicValue?: DynamicValues;
+  dynamicValue?: DynamicValue;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -26,14 +23,12 @@ const Button: FC<ButtonProps> = ({
   dynamicValue,
 }) => {
   const router = useRouter();
+  const { setDynamicValue } = useDynamicValues();
   const dispatch = useDispatch();
 
   const onClick = () => {
-    if (dynamicValue?.toLowerCase() === "gender") {
-      dispatch(setIsMale(label.toLowerCase() === "male"));
-    }
-    if (dynamicValue?.toLowerCase() === "isparent") {
-      dispatch(setIsParent(label.toLowerCase() === "yes"));
+    if (dynamicValue) {
+      setDynamicValue(dynamicValue, label);
     }
 
     dispatch(saveAnswer({ questionId, answer: label }));
