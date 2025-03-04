@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 
 import surveyData from "@/data/survey.json";
+
+import { SurveyQuestion } from "../components/SurveyQuestion/SurveyQuestion";
 import { Button } from "@/app/components/Button/Button";
 
 import styles from "./page.module.css";
@@ -23,7 +25,7 @@ export default async function SurveyPage({
 
   return (
     <div className={styles.survey}>
-      <h1 className={styles.question}>{question.question}</h1>
+      <SurveyQuestion question={question.question} />
       <div className={styles.buttonGroup}>
         {question.options.map((option) => (
           <Button
