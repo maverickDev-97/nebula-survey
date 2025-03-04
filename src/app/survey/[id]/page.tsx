@@ -33,6 +33,7 @@ export default async function SurveyPage({
             label={option.answer}
             questionId={question.id}
             nextQuestionId={option.next}
+            dynamicValue={question?.dynamicValue}
           />
         ))}
       </div>
