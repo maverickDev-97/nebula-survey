@@ -1,0 +1,18 @@
+.page {
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.heading {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.text {
+  margin: var(--space-size--md) 0 var(--space-size--lg);
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 400;
+}

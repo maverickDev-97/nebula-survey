@@ -104,6 +104,7 @@
     "q7": {
       "id": "q7",
       "question": "Do you tend to overthink?",
+      "showHint": true,
       "answerOptions": [
         {
           "answer": "Yes",

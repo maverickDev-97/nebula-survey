@@ -39,6 +39,7 @@ export default async function SurveyPage({
             questionId={question.id}
             nextQuestionId={option.next}
             dynamicValue={question.dynamicValue}
+            showHint={question.showHint}
           />
         ))}
       </div>

@@ -7,4 +7,5 @@ export interface Question {
   answerOptions: AnswerOption[];
   dynamicValue: DynamicValue;
   hasDynamicValues: boolean;
+  showHint?: boolean;
 }

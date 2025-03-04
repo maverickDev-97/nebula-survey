@@ -14,6 +14,8 @@ interface ButtonProps {
   questionId: string;
   nextQuestionId?: string;
   dynamicValue?: DynamicValue;
+  showHint?: boolean;
+  skipSaving?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -21,17 +23,26 @@ const Button: FC<ButtonProps> = ({
   questionId,
   nextQuestionId,
   dynamicValue,
+  showHint,
+  skipSaving,
 }) => {
   const router = useRouter();
   const { setDynamicValue } = useDynamicValues();
   const dispatch = useDispatch();
 
   const onClick = () => {
+    if (showHint) {
+      router.push(`/survey/hint?next=${nextQuestionId}`);
+      return;
+    }
+
+    if (!skipSaving) {
+      dispatch(saveAnswer({ questionId, answer: label }));
+    }
+
     if (dynamicValue) {
       setDynamicValue(dynamicValue, label);
     }
-
-    dispatch(saveAnswer({ questionId, answer: label }));
 
     if (nextQuestionId) {
       router.push(`/survey/${nextQuestionId}`);
