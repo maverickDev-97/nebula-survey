@@ -1,0 +1,12 @@
+.page {
+  max-width: 570px;
+}
+
+.answerWrapper {
+  padding: var(--space-size--md) 0;
+  border-bottom: 1px solid #dddddd;
+}
+
+.question {
+  margin-bottom: var(--space-size--sm);
+}

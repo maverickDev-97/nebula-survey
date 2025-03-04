@@ -1,6 +1,5 @@
 .survey {
   width: 370px;
-  padding: var(--space-size--md);
   display: flex;
   flex-direction: column;
   align-items: center;

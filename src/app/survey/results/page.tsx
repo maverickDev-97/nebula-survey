@@ -9,6 +9,8 @@ import { useDynamicValues } from "@/hooks";
 
 import surveyData from "@/data/survey.json";
 
+import styles from "./page.module.css";
+
 export default function ResultsPage() {
   const router = useRouter();
 
@@ -25,11 +27,11 @@ export default function ResultsPage() {
   }, [router, answers]);
 
   return (
-    <div>
+    <div className={styles.page}>
       {Object.entries(answers).map(([questionId, answer]) => {
         return (
-          <div key={questionId}>
-            <strong>
+          <div className={styles.answerWrapper} key={questionId}>
+            <p className={styles.question}>
               {replaceDynamicValues(
                 surveyData.questions[
                   questionId as keyof typeof surveyData.questions
@@ -37,9 +39,8 @@ export default function ResultsPage() {
                 isMale,
                 isParent
               )}
-            </strong>
-            <div>{answer}</div>
-            <hr />
+            </p>
+            <h3 className={styles.answer}>{answer}</h3>
           </div>
         );
       })}
