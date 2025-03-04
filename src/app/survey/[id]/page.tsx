@@ -32,6 +32,7 @@ export default async function SurveyPage({
             key={option.answer}
             label={option.answer}
             questionId={question.id}
+            nextQuestionId={option.next}
           />
         ))}
       </div>
