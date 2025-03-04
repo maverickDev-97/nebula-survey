@@ -4,7 +4,7 @@
       "id": "q1",
       "question": "Select your gender:",
       "dynamicValue": "gender",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Male",
           "next": "q2"
@@ -18,7 +18,7 @@
     "q2": {
       "id": "q2",
       "question": "So we can get to know you better, tell us about your relationship status.",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Single",
           "next": "q3"
@@ -33,7 +33,7 @@
       "id": "q3",
       "question": "Are you a single parent?",
       "dynamicValue": "isParent",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Yes",
           "next": "q5"
@@ -48,7 +48,7 @@
       "id": "q4",
       "question": "Are you a parent?",
       "dynamicValue": "isParent",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Yes",
           "next": "q6"
@@ -61,8 +61,9 @@
     },
     "q5": {
       "id": "q5",
+      "hasDynamicValues": true,
       "question": "Single {gender} {isParent} need a slightly different approach to improve their relationship. Which statement best describes you?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "I’m very unhappy with how things are going in my relationship",
           "next": "q7"
@@ -79,8 +80,9 @@
     },
     "q6": {
       "id": "q6",
+      "hasDynamicValues": true,
       "question": "{gender} {isParent} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "I was unhappy with low things were going in my relationship",
           "next": "q8"
@@ -102,7 +104,7 @@
     "q7": {
       "id": "q7",
       "question": "Do you tend to overthink?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Yes",
           "next": "q9"
@@ -116,7 +118,7 @@
     "q8": {
       "id": "q8",
       "question": "Is your partner an introvert or extrovert?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Introvert",
           "next": "q11"
@@ -134,7 +136,7 @@
     "q9": {
       "id": "q9",
       "question": "What is most important to you?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Success"
         },
@@ -152,7 +154,7 @@
     "q10": {
       "id": "q10",
       "question": "Is emotional control tricky for you?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Yes"
         },
@@ -170,7 +172,7 @@
     "q11": {
       "id": "q11",
       "question": "What is your partner’s gender?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Male",
           "next": "q12"
@@ -184,7 +186,7 @@
     "q12": {
       "id": "q12",
       "question": "Do you agree with the statement below? “My partner and I make sex a priority in our relationship”",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Strongly agree",
           "next": "q13"
@@ -210,7 +212,7 @@
     "q13": {
       "id": "q13",
       "question": "When you think about your relationship goals, you feel...?",
-      "options": [
+      "answerOptions": [
         {
           "answer": "Optimistic! They are totally doable, with some guidance."
         },

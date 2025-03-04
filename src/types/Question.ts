@@ -1,10 +1,10 @@
 import { AnswerOption } from "./AnswerOption";
-
-export type DynamicValues = "gender" | "isParent";
+import { DynamicValue } from "./DynamicValue";
 
 export interface Question {
   id: string;
   question: string;
   answerOptions: AnswerOption[];
-  dynamicValue?: DynamicValues;
+  dynamicValue: DynamicValue;
+  hasDynamicValues: boolean;
 }
