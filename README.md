@@ -45,10 +45,10 @@ Visit [http://localhost:3000/survey/relationship/q1](http://localhost:3000/surve
 
 ## Project Structure
 
-`src/app/`: Contains the application routes.
-`src/app/components/`: Contains React components used across the app.
-`public/`: Static assets like images, fonts, etc.
-`src/data/`: Contains the surveys structure and dynamic values for user interaction.
-`src/store/`: Redux state for storing user answers.
-`src/hooks/`: Reusable hooks.
-`src/types/`: Types for application entities.
+- `src/app/`: Contains the application routes.
+- `src/app/components/`: Contains React components used across the app.
+- `public/`: Static assets like images, fonts, etc.
+- `src/data/`: Contains the surveys structure and dynamic values for user interaction.
+- `src/store/`: Redux state for storing user answers.
+- `src/hooks/`: Reusable hooks.
+- `src/types/`: Types for application entities.
