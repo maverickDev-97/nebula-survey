@@ -11,6 +11,7 @@ import { useDynamicValues } from "@/hooks";
 
 interface ButtonProps {
   label: string;
+  surveyId: string;
   questionId: string;
   nextQuestionId?: string;
   dynamicValue?: DynamicValue;
@@ -21,6 +22,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({
   label,
+  surveyId,
   questionId,
   nextQuestionId,
   dynamicValue,
@@ -38,12 +40,14 @@ const Button: FC<ButtonProps> = ({
     }
 
     if (showHint) {
-      router.push(`/survey/hint?next=${nextQuestionId}`);
+      router.push(
+        `/survey/hint?surveyId=${surveyId}&nextQuestionId=${nextQuestionId}`
+      );
       return;
     }
 
     if (!skipSaving) {
-      dispatch(saveAnswer({ questionId, answer: label }));
+      dispatch(saveAnswer({ surveyId, questionId, answer: label }));
     }
 
     if (dynamicValue) {
@@ -51,9 +55,9 @@ const Button: FC<ButtonProps> = ({
     }
 
     if (nextQuestionId) {
-      router.push(`/survey/${nextQuestionId}`);
+      router.push(`/survey/${surveyId}/${nextQuestionId}`);
     } else {
-      router.push("/survey/results");
+      router.push(`/survey/${surveyId}/results`);
     }
   };
 

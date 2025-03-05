@@ -9,7 +9,8 @@ import styles from "./page.module.css";
 
 export default function HintPage() {
   const searchParams = useSearchParams();
-  const nextQuestionId = searchParams.get("next") ?? "";
+  const surveyId = searchParams.get("surveyId") ?? "";
+  const nextQuestionId = searchParams.get("nextQuestionId") ?? "";
 
   useEffect(() => {
     document.body.style.background =
@@ -35,6 +36,7 @@ export default function HintPage() {
       </p>
       <Button
         label="Next"
+        surveyId={surveyId}
         questionId=""
         nextQuestionId={nextQuestionId}
         skipSaving

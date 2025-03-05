@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SurveyState {
-  answers: Record<string, string>;
+  answers: Record<string, Record<string, string>>;
   isMale: boolean;
   isParent: boolean;
 }
@@ -18,9 +18,16 @@ export const surveySlice = createSlice({
   reducers: {
     saveAnswer: (
       state,
-      action: PayloadAction<{ questionId: string; answer: string }>
+      action: PayloadAction<{
+        surveyId: string;
+        questionId: string;
+        answer: string;
+      }>
     ) => {
-      state.answers[action.payload.questionId] = action.payload.answer;
+      state.answers[action.payload.surveyId] = {
+        ...state.answers[action.payload.surveyId],
+        [action.payload.questionId]: action.payload.answer,
+      };
     },
     setIsMale: (state, action: PayloadAction<boolean>) => {
       state.isMale = action.payload;
@@ -28,8 +35,8 @@ export const surveySlice = createSlice({
     setIsParent: (state, action: PayloadAction<boolean>) => {
       state.isParent = action.payload;
     },
-    resetSurvey: (state) => {
-      state.answers = {};
+    resetSurvey: (state, action: PayloadAction<string>) => {
+      delete state.answers[action.payload];
     },
   },
 });

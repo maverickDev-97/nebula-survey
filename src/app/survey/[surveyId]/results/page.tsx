@@ -1,44 +1,51 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 import { RootState } from "@/store";
 import { useDynamicValues } from "@/hooks";
 import { resetSurvey } from "@/store/reducers/surveySlice";
 import { Button } from "@/app/components/Button/Button";
 
-import surveyData from "@/data/survey.json";
+import surveysData from "@/data/surveys.json";
 
 import styles from "./page.module.css";
+import { Surveys } from "@/types";
+
+const surveys = surveysData as unknown as Surveys;
 
 export default function ResultsPage() {
   const router = useRouter();
+  const params = useParams();
+  const surveyId = params.surveyId as string;
+
   const dispatch = useDispatch();
-
-  const { replaceDynamicValues } = useDynamicValues();
-
   const { answers, isMale, isParent } = useSelector(
     (state: RootState) => state.survey
   );
+  const surveyAnswers = useMemo(
+    () => answers[surveyId] ?? {},
+    [answers, surveyId]
+  );
+
+  const { replaceDynamicValues } = useDynamicValues();
 
   useEffect(() => {
-    if (!Object.keys(answers).length) {
-      router.push("/survey/q1");
+    if (Object.keys(surveyAnswers).length === 0) {
+      router.push(`/survey/${surveyId}/q1`);
     }
-  }, [router, answers]);
+  }, [router, surveyAnswers, surveyId]);
 
   return (
     <div className={styles.page}>
-      {Object.entries(answers).map(([questionId, answer]) => {
+      {Object.entries(surveyAnswers).map(([questionId, answer]) => {
         return (
           <div className={styles.answerWrapper} key={questionId}>
             <p className={styles.question}>
               {replaceDynamicValues(
-                surveyData.questions[
-                  questionId as keyof typeof surveyData.questions
-                ].question,
+                surveys[surveyId].questions[questionId].question,
                 isMale,
                 isParent
               )}
@@ -52,9 +59,10 @@ export default function ResultsPage() {
           label="Reset survey"
           questionId=""
           customOnClick={() => {
-            dispatch(resetSurvey());
-            router.push("/survey/q1");
+            dispatch(resetSurvey(surveyId));
+            router.push(`/survey/${surveyId}/q1`);
           }}
+          surveyId={surveyId}
         />
       </div>
     </div>
