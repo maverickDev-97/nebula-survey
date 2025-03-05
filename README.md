@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nebula Survey
 
-## Getting Started
+Nebula Survey is a dynamic survey application for collecting responses and analyzing relationships. The app leverages React and Next.js to handle the user interface and routing logic.
 
-First, run the development server:
+## Setup and Installation
+
+Before running the project, ensure that you have `Node.js` and `npm` installed. If not, download and install them from [here](https://nodejs.org/).
+
+1. Clone the repository:
+
+   ```bash
+   git clone <your-repository-url>
+   cd nebula-survey
+   ```
+
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+## Running the Project
+
+The project supports both development and production environments.
+
+### Development Environment
+
+To run the app in development mode with live reloading:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000/survey/relationship/q1](http://localhost:3000/survey/relationship/q1) or [http://localhost:3000/survey/profile/q1](http://localhost:3000/survey/profile/q1) to view a survey in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To prepare and run the app for production:
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Visit [http://localhost:3000/survey/relationship/q1](http://localhost:3000/survey/relationship/q1) or [http://localhost:3000/survey/profile/q1](http://localhost:3000/survey/profile/q1) to see the production version of a survey.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`src/app/`: Contains the application routes.
+`src/app/components/`: Contains React components used across the app.
+`public/`: Static assets like images, fonts, etc.
+`src/data/`: Contains the surveys structure and dynamic values for user interaction.
+`src/store/`: Redux state for storing user answers.
+`src/hooks/`: Reusable hooks.
+`src/types/`: Types for application entities.
