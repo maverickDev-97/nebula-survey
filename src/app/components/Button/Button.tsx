@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import styles from "./button.module.css";
@@ -34,24 +34,14 @@ const Button: FC<ButtonProps> = ({
   const { setDynamicValue } = useDynamicValues();
   const dispatch = useDispatch();
 
-  const onClick = () => {
-    if (customOnClick) {
-      return customOnClick();
-    }
-
-    if (showHint) {
-      router.push(
-        `/survey/hint?surveyId=${surveyId}&nextQuestionId=${nextQuestionId}`
-      );
+  const handleNavigation = useCallback(() => {
+    if (showHint && nextQuestionId) {
+      const params = new URLSearchParams({
+        surveyId,
+        nextQuestionId,
+      });
+      router.push(`/survey/hint?${params.toString()}`);
       return;
-    }
-
-    if (!skipSaving) {
-      dispatch(saveAnswer({ surveyId, questionId, answer: label }));
-    }
-
-    if (dynamicValue) {
-      setDynamicValue(dynamicValue, label);
     }
 
     if (nextQuestionId) {
@@ -59,7 +49,30 @@ const Button: FC<ButtonProps> = ({
     } else {
       router.push(`/survey/${surveyId}/results`);
     }
-  };
+  }, [router, surveyId, nextQuestionId, showHint]);
+
+  const handleSaveAnswer = useCallback(() => {
+    if (!skipSaving) {
+      dispatch(saveAnswer({ surveyId, questionId, answer: label }));
+    }
+  }, [dispatch, surveyId, questionId, label, skipSaving]);
+
+  const handleDynamicValue = useCallback(() => {
+    if (dynamicValue) {
+      setDynamicValue(dynamicValue, label);
+    }
+  }, [setDynamicValue, dynamicValue, label]);
+
+  const onClick = useCallback(() => {
+    if (customOnClick) {
+      customOnClick();
+      return;
+    }
+
+    handleSaveAnswer();
+    handleDynamicValue();
+    handleNavigation();
+  }, [customOnClick, handleSaveAnswer, handleDynamicValue, handleNavigation]);
 
   return (
     <button className={styles.button} onClick={onClick}>
