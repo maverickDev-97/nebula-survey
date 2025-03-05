@@ -11,13 +11,13 @@
   left: -40%;
   background: none;
   border: 0;
+}
 
-  svg {
-    width: 24px;
-    height: 24px;
+.iconWrapper svg {
+  width: 24px;
+  height: 24px;
+}
 
-    path {
-      fill: var(--text-color);
-    }
-  }
+.iconWrapper svg path {
+  fill: var(--text-color);
 }
