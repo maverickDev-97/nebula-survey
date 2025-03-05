@@ -3,3 +3,4 @@ export * from "./Question";
 export * from "./DynamicValue";
 export * from "./Survey";
 export * from "./Surveys";
+export * from "./ScreenType";

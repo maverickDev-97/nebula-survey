@@ -1,0 +1,6 @@
+.input {
+  margin-top: var(--space-size--md);
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: var(--space-size--sm);
+}

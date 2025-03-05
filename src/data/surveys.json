@@ -5,6 +5,7 @@
     "questions": {
       "q1": {
         "id": "q1",
+        "screenType": "multiple-choice",
         "question": "Select your gender:",
         "dynamicValue": "gender",
         "answerOptions": [
@@ -20,6 +21,7 @@
       },
       "q2": {
         "id": "q2",
+        "screenType": "multiple-choice",
         "question": "So we can get to know you better, tell us about your relationship status.",
         "answerOptions": [
           {
@@ -34,6 +36,7 @@
       },
       "q3": {
         "id": "q3",
+        "screenType": "multiple-choice",
         "question": "Are you a single parent?",
         "dynamicValue": "isParent",
         "answerOptions": [
@@ -49,6 +52,7 @@
       },
       "q4": {
         "id": "q4",
+        "screenType": "multiple-choice",
         "question": "Are you a parent?",
         "dynamicValue": "isParent",
         "answerOptions": [
@@ -64,6 +68,7 @@
       },
       "q5": {
         "id": "q5",
+        "screenType": "multiple-choice",
         "hasDynamicValues": true,
         "question": "Single {gender} {isParent} need a slightly different approach to improve their relationship. Which statement best describes you?",
         "answerOptions": [
@@ -83,6 +88,7 @@
       },
       "q6": {
         "id": "q6",
+        "screenType": "multiple-choice",
         "hasDynamicValues": true,
         "question": "{gender} {isParent} need a slightly different approach to find their perfect partner. But first, how did you feel in your last relationship?",
         "answerOptions": [
@@ -106,6 +112,7 @@
       },
       "q7": {
         "id": "q7",
+        "screenType": "multiple-choice",
         "question": "Do you tend to overthink?",
         "showHint": true,
         "answerOptions": [
@@ -121,6 +128,7 @@
       },
       "q8": {
         "id": "q8",
+        "screenType": "multiple-choice",
         "question": "Is your partner an introvert or extrovert?",
         "answerOptions": [
           {
@@ -139,6 +147,7 @@
       },
       "q9": {
         "id": "q9",
+        "screenType": "multiple-choice",
         "question": "What is most important to you?",
         "answerOptions": [
           {
@@ -157,6 +166,7 @@
       },
       "q10": {
         "id": "q10",
+        "screenType": "multiple-choice",
         "question": "Is emotional control tricky for you?",
         "answerOptions": [
           {
@@ -175,6 +185,7 @@
       },
       "q11": {
         "id": "q11",
+        "screenType": "multiple-choice",
         "question": "What is your partner’s gender?",
         "answerOptions": [
           {
@@ -189,6 +200,7 @@
       },
       "q12": {
         "id": "q12",
+        "screenType": "multiple-choice",
         "question": "Do you agree with the statement below? “My partner and I make sex a priority in our relationship”",
         "answerOptions": [
           {
@@ -215,6 +227,7 @@
       },
       "q13": {
         "id": "q13",
+        "screenType": "multiple-choice",
         "question": "When you think about your relationship goals, you feel...?",
         "answerOptions": [
           {
@@ -227,6 +240,23 @@
             "answer": "I’m feeling a little anxious, honestly."
           }
         ]
+      }
+    }
+  },
+  "profile": {
+    "surveyId": "sur1",
+    "title": "Relationship survey",
+    "questions": {
+      "q1": {
+        "id": "q1",
+        "screenType": "input",
+        "question": "What is your name:",
+        "next": "q2"
+      },
+      "q2": {
+        "id": "q2",
+        "screenType": "input",
+        "question": "How old are you?"
       }
     }
   }

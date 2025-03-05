@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 
-import surveysData from "@/data/surveys.json";
 import { SurveyQuestion } from "../../components/SurveyQuestion/SurveyQuestion";
+import { Input, MultipleChoice } from "../../components/ScreenTypes";
+import { ScreenType, Surveys } from "@/types";
+
+import surveysData from "@/data/surveys.json";
 
 import styles from "./page.module.css";
-import { Button } from "@/app/components/Button/Button";
-import { Surveys } from "@/types";
 
 const surveys = surveysData as unknown as Surveys;
 
@@ -55,19 +56,16 @@ export default async function QuestionPage({
         questionId={question.id}
         hasDynamicValues={question.hasDynamicValues ?? false}
       />
-      <div className={styles.buttonGroup}>
-        {question.answerOptions.map((option) => (
-          <Button
-            key={option.answer}
-            surveyId={surveyId}
-            label={option.answer}
-            questionId={question.id}
-            nextQuestionId={option.next}
-            dynamicValue={question.dynamicValue}
-            showHint={question.showHint ?? false}
-          />
-        ))}
-      </div>
+      {question.screenType === ScreenType.MULTIPLE_CHOICE && (
+        <MultipleChoice question={question} surveyId={surveyId} />
+      )}
+      {question.screenType === ScreenType.INPUT && (
+        <Input
+          questionId={questionId}
+          surveyId={surveyId}
+          nextQuestionId={question.next}
+        />
+      )}
     </div>
   );
 }

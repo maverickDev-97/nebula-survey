@@ -1,0 +1,7 @@
+.buttonGroup {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-size--md);
+}
